@@ -83,7 +83,7 @@
 * 변수 선언 : 데이터 타입에서 정한 크기의 메모리를 할당
 
 ex)
-```java
+``` java
 int radius;
 double weight = 75.56;
 char c1, c2, c3 = 'c';
@@ -95,7 +95,7 @@ char c1, c2, c3 = 'c';
 * 실행 중 값의 변경은 불가능
 
 ex)
-```java
+``` java
 final int LENGTH = 20;
 static final double PI = 3.141592;
 ```
@@ -135,4 +135,174 @@ static final double PI = 3.141592;
 * 비트 논리 연산 : 비트끼리 AND, OR, XOR, NOT 연산
 * 비트 시프트 연산 : 비트를 오른쪽이나 왼쪽으로 이동
 
+### 조건문 - 단순 if 문, if-else 문
+* 단순 if 문
+  - if의 괄호 안에 조건식(논리형 변수나 논리 연산)
+  - 실행문장이 단일 문장인 경우 둘러싸는 {} 생략 가능
+
+* if-else 문
+  - 조건식이 참인 경우와 거짓인 경우에 실행할 문장을 각각 지시
+
+### 다중 if-else 문
+* 다중 if문
+* 조건문이 너무 많은 경우, switch 문 사용 권장
+
+### switch 문
+* switch 문의 식과 case 문의 값과 비교
+  - case의 비교 값과 일치하면 해당 case의 실행문장 수행
+  - break를 만나면 switch 문을 벗어남
+  - case의 비교 값과 일치하는 것이 없으면 default 문 실행
+  - default문은 생략 가능
+
 ## 4월 3일 (5주차)
+
+### 반복문
+* 자바 반복문 - for 문, while 문, do-whlie 문
+  
+---
+
+### for
+* for 문을 이용하여 1부터 10까지 합 출력
+
+``` java
+public static void main(String[] args) {
+        int i, sum = 0;
+
+        for (i=1; i<=10; i++){ // 1~10까지 반복
+            sum += i;
+            System.out.print(i); // 더하는 수 출력
+
+            if (i <= 9) // 1~9까지는 '+' 출력
+                System.out.print("+");
+            else { // i가 10인 경우
+                System.out.print("="); // '=' 출력
+                System.out.print(sum); // 덧셈 결과 출력
+            }
+        }
+    }
+```
+**결과** `1+2+3+4+5+6+7+8+9+10=55`
+
+---
+
+### while
+* while 문을 이용하여 입력된 정수의 평균 구하기
+
+``` java
+public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int count=0, n=0;
+        double sum=0;
+
+        System.out.println("정수를 입력하고 마지막에 0을 입력하세요.");
+        while((n=scanner.nextInt()) != 0){  //0이 입력되면 while 문 벗어남
+            sum=sum+n;
+            count++;
+        }
+        System.out.print("수의 개수는 " + count + "개이며 ");
+        System.out.println("평균은 " + sum/count + "입니다.");
+        scanner.close();
+    }
+```
+**결과** 
+`정수를 입력하고 마지막에 0을 입력하세요.`
+
+`10 20`
+
+`30`
+
+`0`
+
+`수의 개수는 3개이며 평균은 20.0 입니다.`
+
+---
+
+### do-while
+* do-while 문을 이용하여 'a' 에서 'z' 가지 출력하기
+
+``` java
+ public static void main(String[] args) {
+        char a = 'a';
+
+        do{
+            System.out.print(a);
+            a = (char) (a+1);
+        } while (a <= 'z');
+    }
+```
+
+**결과** 
+`abcdefghijklmnopqrstuvwxyz`
+
+---
+
+### continue
+* continue 문을 이용하여 양수 합 구하기
+
+``` java
+public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.println("정수를 5개 입력하세요.");
+        int sum=0;
+
+        for(int i=0; i<5; i++){
+            int n=scanner.nextInt();
+            if(n<=0) continue;
+            else sum += n;
+        }
+        System.out.println("양수의 합은 " + sum);
+
+        scanner.close();
+    }
+```
+
+**결과** 
+`정수를 5개 입력하세요.`
+
+`6`
+
+`3`
+
+`-8`
+
+`2`
+
+`-4`
+
+`양수의 합은 11`
+
+---
+
+### break
+* break 문을 이용하여 "exit"이 입력되면 while 문 벗어나기
+
+``` java
+public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("exit을 입력하면 종료합니다");
+
+        while(true) {
+            System.out.print(">>");
+            String text = scanner.nextLine();
+            if(text.equals("exit"))
+                break;
+        }
+
+        System.out.println("종료합니다...");
+        scanner.close();
+    }
+```
+
+**결과** 
+`exit을 입력하면 종료합니다`
+
+`d`
+
+`sdf`
+
+`exio`
+
+`exit`
+
+`종료합니다...`
