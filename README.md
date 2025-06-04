@@ -469,3 +469,61 @@ public static void main(String[] args) {
   - 상속을 위한 슈퍼 클래스로 활용하는 것
   - 서브 클래스에서 추상 메소드 구현
   - 다형성 실현
+
+## 5월 15일 (11주차)
+
+### 모듈 개념
+* Java 9에서 도입된 개념
+* 패키지와 이미지 등의 리소스를 담은 컨테이너
+* 모듈 파일(.mod)로 저장
+
+### 자바 모듈화의 목적
+* 자바 컴포넌트들을 필오에 따라 조립하여 사용하기 위함
+* 컴퓨터 시스템의 불필요한 부담 감소
+  - 세밀한 모듈화를 통해 필요 없는 모듈이 로드되지 않게 함
+  - 소형 IOT 장치에도 자바 응용프로그램이 실행되고 성능을 유지하게 함
+ 
+## 5월 22일 (12주차)
+
+### StringBuffer 클래스
+* 가변 스트링을 다루는 클래스
+* StringBuffer 객체 생성
+  `StringBuffer sb = new StringBuffer("java");`
+* String 클래스와 달리 문자열 변경 가능
+  - 가변 크기의 버퍼를 가지고 있어 문자열 수정 가능
+  - 문자열의 수정이 많은 작업에 적합
+* 스트링 조작 사례
+  ``` java
+  StringBuffer sb = new StringBuffer("This");
+
+  sb.append(" is pencil.");   // sb = "This is pencil."
+  sb.insert(7, " my");       // sb = "this is my pencil."
+  sb.replace(8, 10, "your"); // sb = "This is your pencil."
+  System.out.println(sb);    //"This is your pencil." 출력
+
+  ```
+
+### 컬렉션의 개념
+* 요소(element)라고 불리는 가변 개수의 객체들의 저장소
+  - 객체들의 컨테이너라고도 불림
+  - 요소의 개수에 따라 크기 자동 조절
+  - 요소의 삽입, 삭제에 따른 요소의 위치 자동 이동
+* 고정 크기의 배열을 다루는 어려움 해소
+* 다양한 객체들의 삽입, 삭제, 검색 등의 관리 용이
+ 
+### 컬렉션의 특징
+1. 컬렉션은 제네릭(generics) 기법으로 구현
+* 제네릭
+  - 특정 타입만 다루지 않고, 여러 종류의 타입으로 변신할 수 있도록 클래스나 메소드를 일반화 시키는 기법
+  - 클래스나 인터페이스 이름에 \<E>, \<K>, \<V> 등 타입 매개변수 포함
+* 제네릭 컬렉션 사례 : 벡터 Vector\<E>
+  - <E>에서 E에 구체적인 타입을 주어 구체적인 타입만 다루는 벡터로 활용
+  - 정수만 다루는 컬렉션 벡터 Vector\<Integer>
+  - 문자열만 다루는 컬렉션 벡터 Vector\<String>
+1. 컬렉션의 요소는 객체만 가능
+* int, char, double 등의 기본 타입으로 구체화 불가
+* 컬렉션 사례
+  ``` java
+  Vector<int> v = new Vector<int>(); // 컴파일 오류, int는 사용 불가
+  Vector<Integer> v = new Vector<Integer>() // 정상 코드
+  ```
